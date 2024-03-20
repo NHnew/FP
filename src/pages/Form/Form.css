@@ -1,0 +1,126 @@
+.imgbox {
+    background-image: url('../../assets/ftbl.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.samecolor {
+    background: -webkit-linear-gradient(#333EB8, #D515F9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.googlebtn,
+.applebtn {
+    font-size: 13px;
+}
+
+@media screen and (min-width: 450px) and (max-width: 992px) {
+
+    form,
+    .signfooter {
+        max-width: 100% !important;
+    }
+
+    .endtext {
+        margin-top: 40px !important;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .register {
+        width: 100% !important;
+    }
+
+    .logo {
+        width: 150px !important;
+    }
+
+    .signtitle {
+        font-size: 55px !important;
+        line-height: 1 !important;
+    }
+
+    .googlebtn {
+        margin-right: 10px;
+    }
+
+    .applebtn {
+        margin-left: 10px;
+    }
+
+    .googlebtn,
+    .applebtn {
+        padding: 10px !important;
+        font-size: 10px;
+    }
+
+    .imgbox {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+
+    form,
+    .signfooter {
+        max-width: 500px !important;
+    }
+
+    .endtext {
+        margin-top: 40px !important;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+
+    form,
+    .signfooter {
+        max-width: 600px !important;
+    }
+}
+
+@media screen and (min-width: 1750px) {
+
+    form,
+    .signfooter {
+        max-width: 700px !important;
+    }
+
+    .signtitle {
+        font-size: 60px !important;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .logo {
+        width: 250px !important;
+    }
+}
+
+@media screen and (min-width: 2200px) {
+
+    form,
+    .signfooter {
+        max-width: 800px !important;
+    }
+}
+
+
+@media screen and (min-width: 2330px) {
+
+    form,
+    .signfooter {
+        max-width: 900px !important;
+    }
+}
+
+@media screen and (min-width: 2500px) {
+
+    form,
+    .signfooter {
+        max-width: 100% !important;
+    }
+}
