@@ -3,35 +3,63 @@ import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import '../Form/Form.css';
 import { Link } from 'react-router-dom';
-
+import { useState } from 'react';
 
 
 
 const SignUp = () => {
+
+    const [name, setName] = useState();
+    const [username, setUsername] = useState();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const clearForm = () => {
+        setName('');
+        setUsername('');
+        setEmail('');
+        setPassword('');
+    };
+
+    const signUpUsers = async () => {
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/Authentication/Register`, { name, username, email, password });
+            console.log('response', response.data);
+            navigate('/home');
+            alert("Qeydiyyat ugurla basa catdi!");
+        } catch (error) {
+            alert("Qeydiyyat ugursuz basa catdi!");
+        }
+        clearForm();
+    };
 
     return (
         <div className='sign flex w-full min-h-screen bg-black'>
             <div className='register flex justify-center items-center w-1/2 text-white px-5'>
                 <div>
                     <img className='logo w-48' src={Logo} alt="" />
-                    <h1 className='signtitle text-4xl mt-12 mb-10'>Futbol dünyasına <span className='samecolor text-fuchsia-600'>keçid et!</span></h1>
-                    <form className='max-w-[410px]' action="Get">
+                    <h1 className='signtitle text-4xl font-bold mt-12 mb-10'>Futbol dünyasına <span className='samecolor text-fuchsia-600'>keçid et!</span></h1>
+                    <form className='max-w-[410px]'>
                         <div>
                             <div class="mb-4">
-                                <input class="w-full px-3 py-2 bg-zinc-900 rounded-3xl" type="text" placeholder="ad soyad" required="" />
+                                <input onChange={(e) => setName(e.target.value)} value={name} class="w-full px-3 py-2 bg-zinc-900 rounded-3xl" type="text" placeholder="ad soyad" required />
                             </div>
                             <div class="mb-4">
-                                <input class="w-full px-3 py-2 bg-zinc-900 rounded-3xl" type="text" placeholder="istifadəçi adı" required="" />
+                                <input onChange={(e) => setUsername(e.target.value)} value={username} class="w-full px-3 py-2 bg-zinc-900 rounded-3xl" type="text" placeholder="istifadəçi adı" required />
                             </div>
                             <div className='mb-4'>
-                                <input className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="email" placeholder='email' required />
+                                <input onChange={(e) => setEmail(e.target.value)} value={email} className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="email" placeholder='email' required />
+                            </div>
+                            <div className='mb-4'>
+                                <input onChange={(e) => setPassword(e.target.value)} value={password} className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="password" placeholder='şifrə' required />
                             </div>
                             <div>
-                                <input className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="password" placeholder='şifrə' required />
+                                <input onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="password" placeholder='şifrənin təkrarı' required />
                             </div>
                         </div>
                         <div className='mt-4 flex items-center justify-between'>
-                            <button className='loginbtn bg-white text-black px-5 py-2 font-bold rounded-3xl'>qeydiyyat</button>
+                            <button onClick={signUpUsers} className='loginbtn bg-white text-black px-5 py-2 font-bold rounded-3xl'>Qeydiyyat</button>
                         </div>
                     </form>
                     <div className='signfooter max-w-[410px] mt-10 border-t-2 border-gray-300'>

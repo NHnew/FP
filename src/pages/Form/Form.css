@@ -12,7 +12,7 @@
 
 .googlebtn,
 .applebtn {
-    font-size: 13px;
+    font-size: 15px;
 }
 
 @media screen and (min-width: 450px) and (max-width: 992px) {
@@ -38,8 +38,9 @@
     }
 
     .signtitle {
-        font-size: 55px !important;
+        font-size: 44px !important;
         line-height: 1 !important;
+        margin-right: 60px;
     }
 
     .googlebtn {
@@ -53,7 +54,7 @@
     .googlebtn,
     .applebtn {
         padding: 10px !important;
-        font-size: 10px;
+        font-size: 15px;
     }
 
     .imgbox {
