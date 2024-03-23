@@ -19,7 +19,8 @@ const Login = () => {
         setPassword('');
     };
 
-    const loginUsers = async () => {
+    const loginUsers = async (e) => {
+        e.preventDefault();
         if (userNameOrEmail || password) {
             try {
                 const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/Authentication/Login`, { userNameOrEmail, password });

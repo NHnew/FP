@@ -2,36 +2,50 @@ import Logo from '../../assets/fportal.webp';
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import '../Form/Form.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-
+import axios from 'axios';
 
 
 const SignUp = () => {
 
-    const [name, setName] = useState();
-    const [username, setUsername] = useState();
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const navigate = useNavigate();
 
     const clearForm = () => {
         setName('');
-        setUsername('');
+        setSurname('');
         setEmail('');
         setPassword('');
+        setConfirmPassword('');
     };
 
-    const signUpUsers = async () => {
-        try {
-            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/Authentication/Register`, { name, username, email, password });
-            console.log('response', response.data);
-            navigate('/home');
-            alert("Qeydiyyat ugurla basa catdi!");
-        } catch (error) {
-            alert("Qeydiyyat ugursuz basa catdi!");
+    const signUpUsers = async (e) => {
+        e.preventDefault();
+        if (name && surname && password && confirmPassword) {
+            try {
+                const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/Authentication/Register`, { name, surname, email, password, confirmPassword });
+                console.log('response', response.data);
+                navigate('/home');
+                alert("Qeydiyyat ugurla basa catdi!");
+            } catch (error) {
+                const messages = error?.response?.data?.messages;
+
+                if (messages == null || messages.length == 0) {
+                    alert("Qeydiyyat ugursuz basa catdi!");
+                }
+                else {
+                    alert(messages.join(""));
+                }
+
+                console.log(error);
+            };
         }
-        clearForm();
+        clearForm();;
     };
 
     return (
@@ -40,13 +54,11 @@ const SignUp = () => {
                 <div>
                     <img className='logo w-48' src={Logo} alt="" />
                     <h1 className='signtitle text-4xl font-bold mt-12 mb-10'>Futbol dünyasına <span className='samecolor text-fuchsia-600'>keçid et!</span></h1>
-                    <form className='max-w-[410px]'>
+                    <form onSubmit={signUpUsers} className='max-w-[410px]'>
                         <div>
-                            <div class="mb-4">
-                                <input onChange={(e) => setName(e.target.value)} value={name} class="w-full px-3 py-2 bg-zinc-900 rounded-3xl" type="text" placeholder="ad soyad" required />
-                            </div>
-                            <div class="mb-4">
-                                <input onChange={(e) => setUsername(e.target.value)} value={username} class="w-full px-3 py-2 bg-zinc-900 rounded-3xl" type="text" placeholder="istifadəçi adı" required />
+                            <div className="mb-4 d-flex">
+                                <input onChange={(e) => setName(e.target.value)} value={name} className="mr-4 px-3 py-2 bg-zinc-900 rounded-3xl" type="text" placeholder="ad" required />
+                                <input onChange={(e) => setSurname(e.target.value)} value={surname} className="px-3 py-2 bg-zinc-900 rounded-3xl" type="text" placeholder="soyad" required />
                             </div>
                             <div className='mb-4'>
                                 <input onChange={(e) => setEmail(e.target.value)} value={email} className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="email" placeholder='email' required />
@@ -59,7 +71,7 @@ const SignUp = () => {
                             </div>
                         </div>
                         <div className='mt-4 flex items-center justify-between'>
-                            <button onClick={signUpUsers} className='loginbtn bg-white text-black px-5 py-2 font-bold rounded-3xl'>Qeydiyyat</button>
+                            <button type="submit" className='loginbtn bg-white text-black px-5 py-2 font-bold rounded-3xl'>Qeydiyyat</button>
                         </div>
                     </form>
                     <div className='signfooter max-w-[410px] mt-10 border-t-2 border-gray-300'>
