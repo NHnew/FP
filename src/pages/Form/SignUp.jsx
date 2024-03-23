@@ -45,7 +45,7 @@ const SignUp = () => {
                 console.log(error);
             };
         }
-        clearForm();;
+        clearForm();
     };
 
     return (
