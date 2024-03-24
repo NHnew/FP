@@ -5,7 +5,7 @@ import '../Form/Form.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
-
+import handleException from './../../util/exceptionHandler'
 
 const SignUp = () => {
 
@@ -35,15 +35,7 @@ const SignUp = () => {
                 navigate('/home');
                 alert("Qeydiyyat ugurla basa catdi!");
             } catch (error) {
-                const messages = error?.response?.data?.messages;
-
-                if (messages == null || messages.length == 0) {
-                    alert("Qeydiyyat ugursuz basa catdi!");
-                }
-                else {
-                    alert(messages.join(""));
-                }
-
+                alert(handleException(error?.response?.data?.messages))
                 console.log(error);
             };
         }
