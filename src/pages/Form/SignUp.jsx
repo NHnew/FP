@@ -11,6 +11,7 @@ const SignUp = () => {
 
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
+    const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -19,6 +20,7 @@ const SignUp = () => {
     const clearForm = () => {
         setName('');
         setSurname('');
+        setUserName('');
         setEmail('');
         setPassword('');
         setConfirmPassword('');
@@ -26,9 +28,9 @@ const SignUp = () => {
 
     const signUpUsers = async (e) => {
         e.preventDefault();
-        if (name && surname && password && confirmPassword) {
+        if (name && surname && userName && password && confirmPassword) {
             try {
-                const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/Authentication/Register`, { name, surname, email, password, confirmPassword });
+                const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/Authentication/Register`, { name, surname, userName, email, password, confirmPassword });
                 console.log('response', response.data);
                 navigate('/home');
                 alert("Qeydiyyat ugurla basa catdi!");
@@ -59,6 +61,9 @@ const SignUp = () => {
                             <div className="mb-4 d-flex">
                                 <input onChange={(e) => setName(e.target.value)} value={name} className="mr-4 px-3 py-2 bg-zinc-900 rounded-3xl" type="text" placeholder="ad" required />
                                 <input onChange={(e) => setSurname(e.target.value)} value={surname} className="px-3 py-2 bg-zinc-900 rounded-3xl" type="text" placeholder="soyad" required />
+                            </div>
+                            <div className="mb-4 d-flex">
+                                <input onChange={(e) => setUserName(e.target.value)} value={userName} className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="text" placeholder='istifadəçi adı' required />
                             </div>
                             <div className='mb-4'>
                                 <input onChange={(e) => setEmail(e.target.value)} value={email} className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="email" placeholder='email' required />
