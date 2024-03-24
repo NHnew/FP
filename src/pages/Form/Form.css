@@ -12,7 +12,7 @@
 
 .googlebtn,
 .applebtn {
-    font-size: 15px;
+    font-size: 15px !important;
 }
 
 @media screen and (min-width: 450px) and (max-width: 992px) {
@@ -23,7 +23,7 @@
     }
 
     .endtext {
-        margin-top: 40px !important;
+        margin-top: 20px !important;
         text-align: center;
     }
 }
@@ -53,8 +53,8 @@
 
     .googlebtn,
     .applebtn {
-        padding: 10px !important;
-        font-size: 15px;
+        padding: 8px !important;
+        font-size: 10px !important;
     }
 
     .imgbox {
@@ -70,7 +70,6 @@
     }
 
     .endtext {
-        margin-top: 40px !important;
         text-align: center;
     }
 }

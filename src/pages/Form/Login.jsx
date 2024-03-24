@@ -52,7 +52,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div className='mt-4 flex items-center justify-between'>
-                            <button type="button" onClick={loginUsers} className='loginbtn bg-white text-black px-5 py-2 font-bold rounded-3xl'>Giriş et</button>
+                            <button type="button" onClick={loginUsers} className='loginbtn bg-white text-black px-3 py-2 font-bold rounded-3xl'>Giriş et</button>
                             <span className='samecolor parolforget text-fuchsia-600 text-sm cursor-pointer'>Şifrəni unutdun?</span>
                         </div>
                     </form>
