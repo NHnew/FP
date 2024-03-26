@@ -13,25 +13,23 @@ const Login = () => {
     const navigate = useNavigate();
     const [userNameOrEmail, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
-    const clearForm = () => {
-        setEmail('');
-        setPassword('');
-    };
 
     const loginUsers = async (e) => {
         e.preventDefault();
         if (userNameOrEmail || password) {
             try {
+                setIsLoading(true);
                 const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/Authentication/Login`, { userNameOrEmail, password });
                 console.log('response', response.data);
                 navigate('/home');
-                alert("Giris edildi!");
             } catch (error) {
                 alert("istifadeci tapilmadi!");
+            } finally {
+                setIsLoading(false);
             }
         }
-        clearForm();
     };
 
 
@@ -42,17 +40,17 @@ const Login = () => {
                 <div>
                     <img className='logo w-48' src={Logo} alt="" />
                     <h1 className='signtitle text-4xl font-bold mt-12 mb-10'>Futbol dünyasına <span className='samecolor text-fuchsia-600'>keçid et!</span></h1>
-                    <form className='max-w-[410px]'>
+                    <form onSubmit={loginUsers} className='max-w-[410px]'>
                         <div>
                             <div className='mb-4'>
-                                <input className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="email" placeholder='istifadəçi adı və ya email' value={userNameOrEmail} onChange={(e) => setEmail(e.target.value)} required />
+                                <input className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="email or username" placeholder='istifadəçi adı və ya email' value={userNameOrEmail} onChange={(e) => setEmail(e.target.value)} required />
                             </div>
                             <div>
                                 <input className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="password" placeholder='şifrə' value={password} onChange={(e) => setPassword(e.target.value)} required />
                             </div>
                         </div>
                         <div className='mt-4 flex items-center justify-between'>
-                            <button type="button" onClick={loginUsers} className='loginbtn bg-white text-black px-3 py-2 font-bold rounded-3xl'>Giriş et</button>
+                            <button type="submit" className={`loginbtn bg-white text-black px-3 py-2 font-bold rounded-3xl ${isLoading ? 'disabled' : ''}`} disabled={isLoading}>Giriş et</button>
                             <span className='samecolor parolforget text-fuchsia-600 text-sm cursor-pointer'>Şifrəni unutdun?</span>
                         </div>
                     </form>

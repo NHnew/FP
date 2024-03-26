@@ -16,26 +16,24 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
-    const clearForm = () => {
-        setPassword('');
-        setConfirmPassword('');
-    };
 
     const signUpUsers = async (e) => {
         e.preventDefault();
         if (name && surname && userName && password && confirmPassword) {
             try {
+                setIsLoading(true);
                 const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/Authentication/Register`, { name, surname, userName, email, password, confirmPassword });
                 console.log('response', response.data);
                 navigate('/home');
-                alert("Qeydiyyat ugurla basa catdi!");
             } catch (error) {
                 alert(handleException(error?.response?.data?.messages));
                 console.log(error);
-            };
+            } finally {
+                setIsLoading(false);
+            }
         }
-        clearForm();
     };
 
     return (
@@ -67,7 +65,7 @@ const SignUp = () => {
                         </div>
 
                         <div className='mt-4 flex items-center justify-between'>
-                            <button type="submit" className='loginbtn bg-white text-black px-3 py-2 font-bold rounded-3xl'>Qeydiyyat</button>
+                            <button type="submit" className={`loginbtn bg-white text-black px-3 py-2 font-bold rounded-3xl ${isLoading ? 'disabled' : ''}`} disabled={isLoading}>Qeydiyyat</button>
                         </div>
                     </form>
                     <div className='signfooter max-w-[410px] mt-7 border-t-2 border-gray-300'>

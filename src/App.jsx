@@ -3,10 +3,15 @@ import Login from './pages/Form/Login';
 import { BrowserRouter as Router, Route, Navigate, Routes } from 'react-router-dom';
 import SignUp from './pages/Form/SignUp';
 import Home from './pages/Home/Home';
+import News from './pages/News/News';
+import Transfer from './pages/Transfer/Transfer';
+import LiveScore from './pages/LiveScore/LiveScore';
+import Other from './pages/Other/Other';
 
 
 
 const App = () => {
+
   return (
     <>
       <Router>
@@ -15,10 +20,14 @@ const App = () => {
           <Route path='/' element={<Navigate replace to='/login' />} />
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/home' element={<Home />} />
+          <Route path='/news' element={<News />} />
+          <Route path='/transfer' element={<Transfer />} />
+          <Route path='/livescore' element={<LiveScore />} />
+          <Route path='/other' element={<Other />} />
         </Routes>
       </Router>
-
     </>
+
   );
 };
 

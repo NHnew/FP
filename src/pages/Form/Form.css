@@ -10,6 +10,11 @@
     -webkit-text-fill-color: transparent;
 }
 
+.loginbtn.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 .googlebtn,
 .applebtn {
     font-size: 15px !important;
