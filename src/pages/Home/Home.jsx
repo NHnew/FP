@@ -1,8 +1,14 @@
 import React from 'react';
+import Headers from '../../components/Header/Headers';
+
+
+
 
 const Home = () => {
     return (
-        <h1 className='text-4xl font-bold'>Home</h1>
+        <>
+            <Headers />
+        </>
     );
 };
 

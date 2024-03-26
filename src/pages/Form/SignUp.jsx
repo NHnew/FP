@@ -5,7 +5,7 @@ import '../Form/Form.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
-import handleException from './../../util/exceptionHandler'
+import handleException from './../../util/exceptionHandler';
 
 const SignUp = () => {
 
@@ -18,10 +18,6 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const clearForm = () => {
-        setName('');
-        setSurname('');
-        setUserName('');
-        setEmail('');
         setPassword('');
         setConfirmPassword('');
     };
@@ -35,7 +31,7 @@ const SignUp = () => {
                 navigate('/home');
                 alert("Qeydiyyat ugurla basa catdi!");
             } catch (error) {
-                alert(handleException(error?.response?.data?.messages))
+                alert(handleException(error?.response?.data?.messages));
                 console.log(error);
             };
         }
@@ -81,11 +77,11 @@ const SignUp = () => {
                         <div className='flex justify-between mt-4'>
                             <div className='googlebtn w-1/2 flex items-center justify-center bg-zinc-900 mr-2 px-7 py-2 rounded-3xl '>
                                 <FcGoogle />
-                                <button className='ml-2 text-slate-400'>Google ilə qeydiyyat</button>
+                                <button className='ml-2 text-slate-400'>Google</button>
                             </div>
                             <div className='applebtn w-1/2 ml-2 flex items-center justify-center bg-zinc-900 px-7 py-2 rounded-3xl'>
                                 <FaApple />
-                                <button className='ml-2 text-slate-400'>Apple ilə qeydiyyat</button>
+                                <button className='ml-2 text-slate-400'>Apple</button>
                             </div>
                         </div>
                         <div>
