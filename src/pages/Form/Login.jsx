@@ -43,10 +43,10 @@ const Login = () => {
                     <form onSubmit={loginUsers} className='max-w-[410px]'>
                         <div>
                             <div className='mb-4'>
-                                <input className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="email or username" placeholder='istifadəçi adı və ya email' value={userNameOrEmail} onChange={(e) => setEmail(e.target.value)} required />
+                                <input disabled={isLoading} className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="email or username" placeholder='istifadəçi adı və ya email' value={userNameOrEmail} onChange={(e) => setEmail(e.target.value)} required />
                             </div>
                             <div>
-                                <input className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="password" placeholder='şifrə' value={password} onChange={(e) => setPassword(e.target.value)} required />
+                                <input disabled={isLoading} className='w-full px-3 py-2 bg-zinc-900 rounded-3xl' type="password" placeholder='şifrə' value={password} onChange={(e) => setPassword(e.target.value)} required />
                             </div>
                         </div>
                         <div className='mt-4 flex items-center justify-between'>

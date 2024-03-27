@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const Headers = () => {
     return (
-        <header className='bg-black py-2'>
+        <header className='w-full bg-black py-2'>
             <div className='container mx-auto'>
                 <div className="menu flex items-center justify-between">
                     <Link to={'/home'}>
@@ -32,7 +32,7 @@ const Headers = () => {
                                 <li>Digər</li>
                             </Link>
                             <div className='flex items-center bg-white rounded-3xl pl-7 overflow-hidden'>
-                                <IoSearchSharp />
+                                <IoSearchSharp className='icon' />
                                 <input className='w-24 pl-2' type="text" placeholder='Axtarış' />
                             </div>
                         </ul>
@@ -43,6 +43,7 @@ const Headers = () => {
                 </div>
             </div>
         </header>
+
     );
 };
 

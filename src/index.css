@@ -12,6 +12,10 @@
     font-family: "Gotham-Black", Arial, sans-serif !important;
 }
 
+#root {
+    background-color: #000;
+}
+
 
 ::-webkit-scrollbar {
     display: none;
