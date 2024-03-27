@@ -16,6 +16,9 @@
     background-color: #000;
 }
 
+section {
+    padding: 40px 0;
+}
 
 ::-webkit-scrollbar {
     display: none;

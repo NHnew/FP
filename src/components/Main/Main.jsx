@@ -2,13 +2,14 @@ import React from 'react';
 import Image1 from '../../assets/Image1.jpg';
 import Image2 from '../../assets/Image2.jpg';
 import Image3 from '../../assets/Image3.jpg';
+import '../Main/Main.css';
 
 
 const Main = () => {
     return (
         <>
             <main>
-                <section className='py-4'>
+                <section>
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
@@ -29,7 +30,30 @@ const Main = () => {
                         </div>
                     </div>
                 </section>
-            </main>
+                <section>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <h2 className='text-white text-3xl'>Xəbərlər</h2>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                ???
+                            </div>
+                            <div className="col-md-6">
+                                ???
+                            </div>
+                            <div className="col-md-6">
+                                ???
+                            </div>
+                            <div className="col-md-6">
+                                ???
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main >
         </>
     );
 };
