@@ -77,7 +77,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <div className='imgbox w-1/2'></div>
+            <div className='imagebox w-1/2'></div>
         </div>
     );
 };

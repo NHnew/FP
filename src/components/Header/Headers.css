@@ -13,3 +13,27 @@ nav ul li {
 .icon {
     color: #9CA3AF;
 }
+
+.profile {
+    background-image: url('../../assets/2Nabi3x4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.hamburgerMenu {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    nav {
+        display: none;
+    }
+
+    .hamburgerMenu {
+        display: block;
+        color: #fff;
+        font-size: 25px;
+    }
+
+}

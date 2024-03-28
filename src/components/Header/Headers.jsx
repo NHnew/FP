@@ -3,6 +3,8 @@ import Logo from '../../assets/fportal.webp';
 import '../Header/Headers.css';
 import { IoSearchSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
+import { FiMenu } from "react-icons/fi";
+
 
 
 
@@ -11,7 +13,9 @@ const Headers = () => {
     return (
         <header className='w-full bg-black py-2'>
             <div className='container mx-auto'>
+
                 <div className="menu flex items-center justify-between">
+                    <FiMenu className='hamburgerMenu' />
                     <Link to={'/home'}>
                         <div className='logo'>
                             <img className='w-48' src={Logo} alt="" />

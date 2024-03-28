@@ -1,4 +1,4 @@
-.imgbox {
+.imagebox {
     background-image: url('../../assets/ftbl.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -62,7 +62,7 @@
         font-size: 15px !important;
     }
 
-    .imgbox {
+    .imagebox {
         display: none;
     }
 }
