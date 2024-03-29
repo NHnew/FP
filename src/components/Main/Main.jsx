@@ -12,7 +12,7 @@ const Main = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
-                                <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
+                                <div id="carouselExampleSlidesOnly" className=" mt-5 carousel slide" data-bs-ride="carousel">
                                     <div className="h-[500px] rounded-3xl carousel-inner">
                                         <div className="carousel-item active text-white">
                                             <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus eligendi enim, sequi porro.</h3>

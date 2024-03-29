@@ -5,6 +5,7 @@ import { IoSearchSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import { FiMenu } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
+import { useEffect } from 'react';
 
 
 
@@ -16,10 +17,13 @@ const Headers = () => {
     const [menuIcon, setMenuIcon] = useState(true);
     const [menuVisible, setMenuVisible] = useState(false);
 
+
+
     const handleMenuClick = () => {
         setMenuIcon(prevState => !prevState);
         setMenuVisible(prevState => !prevState);
     };
+
 
     return (
         <header className='w-full bg-black py-2'>

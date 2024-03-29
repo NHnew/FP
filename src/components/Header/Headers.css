@@ -3,7 +3,9 @@ header {
     position: fixed;
     top: 0;
     z-index: 100;
+    transition: top 0.3s ease-in-out;
 }
+
 
 .logo,
 .profile {
@@ -20,6 +22,11 @@ ul li {
 .icon {
     color: #9CA3AF;
 }
+
+.inputBox {
+    color: #000;
+}
+
 
 .profile {
     background-image: url('../../assets/2Nabi3x4.jpg');
@@ -61,8 +68,9 @@ ul li {
 
     .inputBox {
         order: -1;
-        width: 100%;
     }
+
+
 
 
     .hamburgerMenu {
