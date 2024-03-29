@@ -46,7 +46,7 @@ const Main = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-md-3">
                                 <div className="box">
                                     <div className="textbox">
                                         <p>Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz</p>
@@ -56,7 +56,7 @@ const Main = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-3">
                                 <div className="box">
                                     <div className="textbox">
                                         <p>Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz</p>
@@ -66,7 +66,7 @@ const Main = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-3">
                                 <div className="box">
                                     <div className="textbox">
                                         <p>Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz</p>
@@ -76,7 +76,47 @@ const Main = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-3">
+                                <div className="box">
+                                    <div className="textbox">
+                                        <p>Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz</p>
+                                    </div>
+                                    <div className="imgbox">
+                                        <img src={Image1} alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="box">
+                                    <div className="textbox">
+                                        <p>Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz</p>
+                                    </div>
+                                    <div className="imgbox">
+                                        <img src={Image1} alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="box">
+                                    <div className="textbox">
+                                        <p>Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz</p>
+                                    </div>
+                                    <div className="imgbox">
+                                        <img src={Image1} alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="box">
+                                    <div className="textbox">
+                                        <p>Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz</p>
+                                    </div>
+                                    <div className="imgbox">
+                                        <img src={Image1} alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
                                 <div className="box">
                                     <div className="textbox">
                                         <p>Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz</p>

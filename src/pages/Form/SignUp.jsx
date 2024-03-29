@@ -38,7 +38,7 @@ const SignUp = () => {
 
     return (
         <div className='sign flex w-full min-h-screen bg-black'>
-            <div className='register flex justify-center items-center w-1/2 text-white px-5'>
+            <div className='py-4 register flex justify-center items-center w-1/2 text-white px-5'>
                 <div>
                     <img className='logo w-48' src={Logo} alt="" />
                     <h1 className='signtitle text-4xl font-bold mt-10 mb-8'>Futbol dünyasına <span className='samecolor text-fuchsia-600'>keçid et!</span></h1>
@@ -91,7 +91,7 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
-            <div className='imgbox w-1/2'></div>
+            <div className='imagebox w-1/2'></div>
         </div>
 
     );

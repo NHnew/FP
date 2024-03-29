@@ -41,7 +41,7 @@ const Headers = () => {
                             </div>
                         </ul>
                     </nav>
-                    <div className='profile text-white w-10 h-10 bg-white rounded-full'>
+                    <div className='profile text-white w-9 h-9 bg-white rounded-full'>
 
                     </div>
                 </div>
