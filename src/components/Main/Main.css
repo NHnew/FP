@@ -1,5 +1,6 @@
 #carouselExampleSlidesOnly {
     position: relative;
+    cursor: pointer;
 }
 
 #carouselExampleSlidesOnly h3 {
@@ -13,9 +14,14 @@
     font-weight: bold;
 }
 
+
 .box {
     margin: 0 10px 50px;
     position: relative;
+}
+
+.box:hover {
+    cursor: pointer;
 }
 
 .textbox p {
@@ -27,6 +33,35 @@
     padding-right: 12px;
 }
 
+.textbox .descriptionTitle {
+    position: absolute;
+    left: 5%;
+    bottom: 23%;
+}
+
+.carouselTitle {
+    position: absolute;
+    left: 5%;
+    top: 52%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px;
+}
+
+
+.descriptionTitle {
+    padding: 1px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.descriptionTitle h4 {
+    font-size: 12px;
+}
+
 .imgbox {
     border-radius: 30px;
     overflow: hidden;
@@ -34,7 +69,8 @@
 }
 
 .col-md-3 .imgbox {
-    height: 400px;
+    border-radius: 20px;
+    height: 350px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1300px) {
@@ -49,9 +85,68 @@
     }
 }
 
+
 @media screen and (max-width: 992px) {
     #carouselExampleSlidesOnly h3 {
         font-size: 22px;
         width: 80%;
     }
+
+    .carouselTitle {
+        position: absolute;
+        top: 60%;
+    }
+
+    .textbox .descriptionTitle {
+        position: absolute;
+        left: 12%;
+        bottom: 28%;
+    }
+
+    .descriptionTitle h4 {
+        font-size: 7px;
+    }
+
+    .textbox p {
+        font-size: 15px;
+        padding: 0 12px;
+    }
+
+    .box {
+        margin: 0 0 15px;
+    }
+
+    .col-md-3 {
+        padding: 0 8px;
+    }
+
+    .col-md-3 .imgbox {
+        height: 220px;
+    }
+
+}
+
+@media screen and (min-width: 1920px) {
+    .carousel-inner {
+        height: 900px;
+    }
+
+    .imgbox {
+        border-radius: 30px;
+        overflow: hidden;
+        height: 900px;
+    }
+
+    .carouselTitle {
+        position: absolute;
+        left: 5%;
+        top: 75%;
+    }
+
+    #carouselExampleSlidesOnly h3 {
+        position: absolute;
+        bottom: 10%;
+        left: 5%;
+    }
+
 }
