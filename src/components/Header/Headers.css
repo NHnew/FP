@@ -36,7 +36,8 @@ ul li {
 }
 
 .hamburgerMenu,
-.leftArrow {
+.leftArrow,
+.languageIcon {
     display: none;
 }
 
@@ -55,7 +56,7 @@ ul li {
         right: 0;
         padding: 50px 10px;
         transition: all 0.5s ease-in-out;
-        z-index: 999
+        z-index: 999;
     }
 
     ul .menuText {
@@ -82,11 +83,27 @@ ul li {
         margin-bottom: 20px;
     }
 
+    .profile {
+        width: 32px;
+        height: 32px;
+    }
+
     .hamburgerMenu,
     .leftArrow {
         display: block;
         color: #fff;
         font-size: 25px;
         cursor: pointer;
+    }
+
+    .languageIcon {
+        width: 100%;
+        min-height: 20vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+
     }
 }

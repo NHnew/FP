@@ -6,9 +6,8 @@ import { Link } from 'react-router-dom';
 import { FiMenu } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { FaArrowLeft } from "react-icons/fa";
-
-
-
+import { GrLanguage } from "react-icons/gr";
+import { useEffect } from 'react';
 
 
 
@@ -18,7 +17,10 @@ const Headers = () => {
     const [menuIcon, setMenuIcon] = useState(true);
     const [menuVisible, setMenuVisible] = useState(false);
 
-
+    useEffect(() => {
+        const body = document.body;
+        menuVisible ? body.style.overflow = 'hidden' : body.style.overflow = '';
+    }, [menuVisible]);
 
     const handleMenuClick = () => {
         setMenuIcon(prevState => !prevState);
@@ -60,6 +62,9 @@ const Headers = () => {
                                 <IoSearchSharp className='icon' />
                                 <input className='w-full pl-2' type="text" placeholder='Axtarış' />
                             </div>
+                        </li>
+                        <li className='languageIcon'>
+                            <GrLanguage />
                         </li>
                     </ul>
                     <div className='profile text-white w-9 h-9 bg-white rounded-full'>
