@@ -5,7 +5,8 @@ import { IoSearchSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import { FiMenu } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
-import { useEffect } from 'react';
+import { FaArrowLeft } from "react-icons/fa";
+
 
 
 
@@ -40,21 +41,24 @@ const Headers = () => {
                     </Link>
                     <ul className={`flex ${menuVisible ? 'show' : 'hide'}`}>
                         <Link to={'/news'}>
-                            <li>Xəbərlər</li>
+                            <li className='menuText'>Xəbərlər</li>
                         </Link>
                         <Link to={'/transfer'}>
-                            <li>Transfer</li>
+                            <li className='menuText'>Transfer</li>
                         </Link>
                         <Link to={'/livescore'}>
-                            <li>Canlı Hesab</li>
+                            <li className='menuText'>Canlı Hesab</li>
                         </Link>
                         <Link to={'/other'}>
-                            <li>Digər</li>
+                            <li className='menuText'>Digər</li>
                         </Link>
-                        <li className='inputBox'>
-                            <div className='flex items-center bg-white rounded-3xl pl-7 overflow-hidden'>
+                        <li className='inputBox w-[150px] flex itmes-center justify-center'>
+                            <Link onClick={handleMenuClick} to={'/home'} className='leftArrow -ml-4 mr-3'>
+                                <FaArrowLeft />
+                            </Link>
+                            <div className='w-full flex items-center bg-white rounded-3xl pl-7 overflow-hidden'>
                                 <IoSearchSharp className='icon' />
-                                <input className='w-24 pl-2' type="text" placeholder='Axtarış' />
+                                <input className='w-full pl-2' type="text" placeholder='Axtarış' />
                             </div>
                         </li>
                     </ul>

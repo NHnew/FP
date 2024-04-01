@@ -35,11 +35,14 @@ ul li {
     background-position: center;
 }
 
-.hamburgerMenu {
+.hamburgerMenu,
+.leftArrow {
     display: none;
 }
 
-@media screen and (max-width: 1025px) {
+
+
+@media screen and (max-width: 1320px) {
     ul {
         width: 100%;
         min-height: 100vh;
@@ -47,11 +50,17 @@ ul li {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 55px;
+        top: 80%;
         left: -100%;
         right: 0;
-        padding: 30px;
-        transition: all 0.5s ease-in-out
+        padding: 50px 10px;
+        transition: all 0.5s ease-in-out;
+        z-index: 999
+    }
+
+    ul .menuText {
+        font-size: 30px;
+        margin-right: 0;
     }
 
     .show {
@@ -67,17 +76,17 @@ ul li {
     }
 
     .inputBox {
+        width: 100%;
         order: -1;
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 
-
-
-
-    .hamburgerMenu {
+    .hamburgerMenu,
+    .leftArrow {
         display: block;
         color: #fff;
         font-size: 25px;
         cursor: pointer;
     }
-
 }
