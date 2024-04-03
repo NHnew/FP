@@ -53,10 +53,7 @@
 
 
 .descriptionTitle {
-    padding: 1px 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 2px 5px 0;
 }
 
 .descriptionTitle h4 {
@@ -87,6 +84,133 @@
     }
 }
 
+@media screen and (min-width: 320px) and (max-width :348px) {
+    .carouselTitle {
+        top: 60%;
+    }
+
+    .descriptionTitle {
+        bottom: 33% !important;
+        left: 13% !important;
+    }
+}
+
+@media screen and (min-width: 348px) and (max-width: 650px) {
+    .carouselTitle {
+        padding: 2px 5px 0;
+        top: 61%;
+    }
+
+    .descriptionTitle {
+        bottom: 27% !important;
+        left: 12% !important;
+    }
+}
+
+
+@media screen and (min-width: 420px) and (max-width: 650px) {
+    .carouselTitle {
+        top: 60%;
+    }
+
+    .descriptionTitle {
+        bottom: 27% !important;
+        left: 12% !important;
+    }
+}
+
+@media screen and (min-width: 440px) and (max-width: 650px) {
+    .carouselTitle {
+        top: 60%;
+    }
+
+    .descriptionTitle {
+        bottom: 27% !important;
+        left: 10% !important;
+    }
+}
+
+@media screen and (min-width: 640px) and (max-width: 768px) {
+    .carouselTitle {
+        top: 65%;
+    }
+
+    .descriptionTitle {
+        bottom: 19% !important;
+        left: 10% !important;
+    }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .carouselTitle {
+        top: 65%;
+    }
+
+    .descriptionTitle {
+        bottom: 25% !important;
+        left: 12% !important;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+    .carouselTitle {
+        top: 46%;
+    }
+
+    .descriptionTitle {
+        bottom: 30% !important;
+        left: 10% !important;
+    }
+
+    .carouselTitle h4 {
+        font-size: 12px;
+    }
+
+    .descriptionTitle h4 {
+        font-size: 8px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+    .carouselTitle {
+        top: 55%;
+    }
+
+    .descriptionTitle {
+        bottom: 25% !important;
+        left: 10% !important;
+    }
+
+    .carouselTitle h4 {
+        font-size: 12px;
+    }
+
+    .descriptionTitle h4 {
+        font-size: 8px;
+    }
+}
+
+
+@media screen and (min-width: 1280px) and (max-width: 1300px) {
+    .carouselTitle {
+        top: 53%;
+    }
+
+    .descriptionTitle {
+        bottom: 28% !important;
+        left: 8% !important;
+    }
+
+    .carouselTitle h4 {
+        font-size: 12px;
+    }
+
+    .descriptionTitle h4 {
+        font-size: 8px;
+    }
+}
+
 
 @media screen and (max-width: 992px) {
     #carouselExampleSlidesOnly h3 {
@@ -94,21 +218,12 @@
         width: 80%;
     }
 
-    .carouselTitle {
-        top: 61%;
-    }
-
     .carouselTitle h4 {
         font-size: 10px;
     }
 
-    .descriptionTitle {
-        bottom: 32% !important;
-        left: 13% !important;
-    }
-
     .descriptionTitle h4 {
-        font-size: 5px;
+        font-size: 10px;
     }
 
     .textbox p {
