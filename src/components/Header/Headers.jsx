@@ -61,7 +61,7 @@ const Headers = () => {
                         <Link className='link' to={'/other'}>
                             <li className='menuText'>Digər</li>
                         </Link>
-                        <li className='inputBox'>
+                        <li className='inputBox min-w-[150px]'>
                             <div className='subInputBox w-full flex items-center bg-white rounded-3xl pl-7 overflow-hidden'>
                                 <IoSearchSharp className='icon' />
                                 <input className='w-full px-2' type="text" placeholder='Axtarış' />
