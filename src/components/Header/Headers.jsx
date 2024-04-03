@@ -5,7 +5,6 @@ import { IoSearchSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import { FiMenu } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
-import { FaArrowLeft } from "react-icons/fa";
 import { GrLanguage } from "react-icons/gr";
 import { useEffect } from 'react';
 
@@ -42,25 +41,22 @@ const Headers = () => {
                         </div>
                     </Link>
                     <ul className={`flex ${menuVisible ? 'show' : 'hide'}`}>
-                        <Link to={'/news'}>
+                        <Link className='link' to={'/news'}>
                             <li className='menuText'>Xəbərlər</li>
                         </Link>
-                        <Link to={'/transfer'}>
+                        <Link className='link' to={'/transfer'}>
                             <li className='menuText'>Transfer</li>
                         </Link>
-                        <Link to={'/livescore'}>
+                        <Link className='link' to={'/livescore'}>
                             <li className='menuText'>Canlı Hesab</li>
                         </Link>
-                        <Link to={'/other'}>
+                        <Link className='link' to={'/other'}>
                             <li className='menuText'>Digər</li>
                         </Link>
-                        <li className='inputBox w-[150px] flex itmes-center justify-center'>
-                            <Link onClick={handleMenuClick} to={'/home'} className='leftArrow -ml-4 mr-3'>
-                                <FaArrowLeft />
-                            </Link>
+                        <li className='inputBox w-[150px]'>
                             <div className='w-full flex items-center bg-white rounded-3xl pl-7 overflow-hidden'>
                                 <IoSearchSharp className='icon' />
-                                <input className='w-full pl-2' type="text" placeholder='Axtarış' />
+                                <input className='w-full px-2' type="text" placeholder='Axtarış' />
                             </div>
                         </li>
                         <li className='languageIcon'>
