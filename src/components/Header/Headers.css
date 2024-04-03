@@ -6,8 +6,7 @@ header {
     transition: top 0.3s ease-in-out;
 }
 
-.logo,
-.profile {
+.logo {
     cursor: pointer;
 }
 
@@ -38,14 +37,6 @@ ul .menuText:hover {
 
 .inputBox {
     color: #000;
-}
-
-
-.profile {
-    background-image: url('../../assets/2Nabi3x4.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .hamburgerMenu,
@@ -79,6 +70,8 @@ ul .menuText:hover {
     ul .menuText {
         font-size: 30px;
         margin-right: 0;
+        padding-bottom: 10px;
+        padding-top: 10px;
     }
 
     .show {
@@ -100,16 +93,19 @@ ul .menuText:hover {
         margin-bottom: 20px;
     }
 
-    .profile {
-        width: 32px;
-        height: 32px;
+    .subInputBox {
+        padding: 7px 0 7px 28px;
     }
 
     .hamburgerMenu {
         display: block;
         color: #fff;
-        font-size: 25px;
         cursor: pointer;
+    }
+
+    .openHamburgerMenu,
+    .closeHamburgerMenu {
+        font-size: 30px;
     }
 
     .languageIcon {
