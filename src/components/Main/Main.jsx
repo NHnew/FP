@@ -130,7 +130,7 @@ const Main = () => {
                                             <div className='descriptionTitle bg-white rounded-3'>
                                                 <h4 className='text-black font-bold'>{item.title}</h4>
                                             </div>
-                                            <p>{(`${item.description}`).substring(0, 32)}...</p>
+                                            <p>{item.description.substring(0, 32)}...</p>
                                         </div>
                                         <div className="imgbox">
                                             <img src={item.primaryImage} alt="" />
