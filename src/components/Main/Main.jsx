@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image1 from '../../assets/Image1.jpg';
 import Image3 from '../../assets/Image3.jpg';
 import '../Main/Main.css';
+import axios from 'axios';
 
 
 const Main = () => {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [primaryImageUrl, setPrimaryImageUrl] = useState('');
+    const [imageUrls, setImageUrls] = useState(['']);
+    const [tagIds, setTagIds] = useState(['']);
+
+    const createUsers = () => {
+        axios.post(`${import.meta.env.VITE_BASE_URL}/News/Create`,);
+    };
+
+
     return (
         <>
             <main>
