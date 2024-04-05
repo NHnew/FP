@@ -36,6 +36,7 @@ ul .menuText:hover {
 }
 
 .inputBox {
+    width: 150px;
     color: #000;
 }
 
