@@ -8,8 +8,24 @@ import axios from 'axios';
 const Main = () => {
 
     const [news, setNews] = useState([]);
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibmljYXQiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJuaWNhdEBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjcwYWZiN2RmLWZiZGMtNGM5YS04OWI3LTdiYmFkNjU1YmVmMiIsIm5iZiI6MTcxMjMyMjk5OCwiZXhwIjoxNzEyMzI2NTk4LCJpc3MiOiJ3d3cubXlhcGkuY29tIiwiYXVkIjoid3d3LmJpbG1lbW5lLmNvbSJ9.9TW8KhEazEbTU7qZLnnvGFLWzBOPSz4nY7yMvJ2CJzI";
 
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibmExM2kiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJuYTEzaUBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk4NDI5Zjc5LTBmZDYtNDg5ZC1hMWEwLWQxMTZlNmI3ODUxZSIsIm5iZiI6MTcxMjMzMDgwOSwiZXhwIjoxNzEyMzM0NDA5LCJpc3MiOiJ3d3cubXlhcGkuY29tIiwiYXVkIjoid3d3LmJpbG1lbW5lLmNvbSJ9.XMKPb-OljFxfl54HkAwYhgutescN6TdTAzLewc3pfWs";
+
+
+    const postNews = async (newsData) => {
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/News/Create`,
+                newsData,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const getNews = async () => {
         try {
@@ -21,12 +37,38 @@ const Main = () => {
             setNews(response.data.data);
             console.log(response.data.data);
         } catch (error) {
-            console.error('Error fetching news:', error);
+            console.error(error);
         }
     };
 
 
     useEffect(() => {
+
+        const initialNews = [
+            {
+                "title": "Title 1",
+                "description": "Description 1",
+                "primaryImageUrl": "url1",
+                "imageUrls": ["url1"],
+                "tagIds": ["tag1"]
+            },
+            {
+                "title": "Title 2",
+                "description": "Description 2",
+                "primaryImageUrl": "url2",
+                "imageUrls": ["url2"],
+                "tagIds": ["tag2"]
+            },
+            {
+                "title": "Title 3",
+                "description": "Description 3",
+                "primaryImageUrl": "url3",
+                "imageUrls": ["url3"],
+                "tagIds": ["tag3"]
+            }
+        ];
+
+        initialNews.forEach(newsItem => postNews(newsItem));
         getNews();
     }, []);
 
@@ -42,7 +84,7 @@ const Main = () => {
                                     <div className="h-[500px] rounded-3xl carousel-inner">
                                         <div className="carousel-item active text-white">
                                             <div className='carouselTitle bg-white rounded-3'>
-                                                <h4 className='text-black'>ÇEMPİONLAR LİQASI</h4>
+                                                <h4 className='text-black font-bold'>ÇEMPİONLAR LİQASI</h4>
                                             </div>
                                             <h3>Lorem ipsum dolor consectetur nicatnabi.</h3>
                                             <div className="imgbox">
@@ -51,7 +93,7 @@ const Main = () => {
                                         </div>
                                         <div className="carousel-item">
                                             <div className='carouselTitle bg-white rounded-3'>
-                                                <h4 className='text-black'>ÇEMPİONLAR LİQASI</h4>
+                                                <h4 className='text-black font-bold'>ÇEMPİONLAR LİQASI</h4>
                                             </div>
                                             <h3>Lorem ipsum dolor consectetur nicatnabi.</h3>
                                             <div className="imgbox">
@@ -60,7 +102,7 @@ const Main = () => {
                                         </div>
                                         <div className="carousel-item">
                                             <div className='carouselTitle bg-white rounded-3'>
-                                                <h4 className='text-black'>ÇEMPİONLAR LİQASI</h4>
+                                                <h4 className='text-black font-bold'>ÇEMPİONLAR LİQASI</h4>
                                             </div>
                                             <h3>Lorem ipsum dolor consectetur nicatnabi.</h3>
                                             <div className="imgbox">
@@ -86,7 +128,7 @@ const Main = () => {
                                     <div className="box">
                                         <div className="textbox">
                                             <div className='descriptionTitle bg-white rounded-3'>
-                                                <h4 className='text-black'>{item.title}</h4>
+                                                <h4 className='text-black font-bold'>{item.title}</h4>
                                             </div>
                                             <p>{(`${item.description}`).substring(0, 32)}...</p>
                                         </div>
