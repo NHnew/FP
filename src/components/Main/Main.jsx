@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image1 from '../../assets/Image1.jpg';
 import Image3 from '../../assets/Image3.jpg';
 import '../Main/Main.css';
@@ -6,15 +6,29 @@ import axios from 'axios';
 
 
 const Main = () => {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [primaryImageUrl, setPrimaryImageUrl] = useState('');
-    const [imageUrls, setImageUrls] = useState(['']);
-    const [tagIds, setTagIds] = useState(['']);
 
-    const createUsers = () => {
-        axios.post(`${import.meta.env.VITE_BASE_URL}/News/Create`,);
+    const [news, setNews] = useState([]);
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibmljYXQiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJuaWNhdEBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjcwYWZiN2RmLWZiZGMtNGM5YS04OWI3LTdiYmFkNjU1YmVmMiIsIm5iZiI6MTcxMjMyMjk5OCwiZXhwIjoxNzEyMzI2NTk4LCJpc3MiOiJ3d3cubXlhcGkuY29tIiwiYXVkIjoid3d3LmJpbG1lbW5lLmNvbSJ9.9TW8KhEazEbTU7qZLnnvGFLWzBOPSz4nY7yMvJ2CJzI";
+
+
+    const getNews = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/News/Read?pageNumber=1&pageSize=10`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            setNews(response.data.data);
+            console.log(response.data.data);
+        } catch (error) {
+            console.error('Error fetching news:', error);
+        }
     };
+
+
+    useEffect(() => {
+        getNews();
+    }, []);
 
 
     return (
@@ -67,110 +81,21 @@ const Main = () => {
                             </div>
                         </div>
                         <div className="row row-cols-md-4 row-cols-2">
-                            <div className="col-md-3">
-                                <div className="box">
-                                    <div className="textbox">
-                                        <div className='descriptionTitle bg-white rounded-3'>
-                                            <h4 className='text-black'>ÖLKƏ FUTBOLU</h4>
+                            {news.map((item, index) => (
+                                <div key={index} className="col-md-3">
+                                    <div className="box">
+                                        <div className="textbox">
+                                            <div className='descriptionTitle bg-white rounded-3'>
+                                                <h4 className='text-black'>{item.title}</h4>
+                                            </div>
+                                            <p>{(`${item.description}`).substring(0, 32)}...</p>
                                         </div>
-                                        <p>{("Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz").substring(0, 32)}...</p>
-                                    </div>
-                                    <div className="imgbox">
-                                        <img src={Image1} alt="" />
+                                        <div className="imgbox">
+                                            <img src={item.primaryImage} alt="" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="box">
-                                    <div className="textbox">
-                                        <div className='descriptionTitle bg-white rounded-3'>
-                                            <h4 className='text-black'>ÖLKƏ FUTBOLU</h4>
-                                        </div>
-                                        <p>{("Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz").substring(0, 32)}...</p>
-                                    </div>
-                                    <div className="imgbox">
-                                        <img src={Image1} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="box">
-                                    <div className="textbox">
-                                        <div className='descriptionTitle bg-white rounded-3'>
-                                            <h4 className='text-black'>ÖLKƏ FUTBOLU</h4>
-                                        </div>
-                                        <p>{("Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz").substring(0, 32)}...</p>
-                                    </div>
-                                    <div className="imgbox">
-                                        <img src={Image1} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="box">
-                                    <div className="textbox">
-                                        <div className='descriptionTitle bg-white rounded-3'>
-                                            <h4 className='text-black'>ÖLKƏ FUTBOLU</h4>
-                                        </div>
-                                        <p>{("Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz").substring(0, 32)}...</p>
-                                    </div>
-                                    <div className="imgbox">
-                                        <img src={Image1} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="box">
-                                    <div className="textbox">
-                                        <div className='descriptionTitle bg-white rounded-3'>
-                                            <h4 className='text-black'>ÖLKƏ FUTBOLU</h4>
-                                        </div>
-                                        <p>{("Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz").substring(0, 32)}...</p>
-                                    </div>
-                                    <div className="imgbox">
-                                        <img src={Image1} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="box">
-                                    <div className="textbox">
-                                        <div className='descriptionTitle bg-white rounded-3'>
-                                            <h4 className='text-black'>ÖLKƏ FUTBOLU</h4>
-                                        </div>
-                                        <p>{("Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz").substring(0, 32)}...</p>
-                                    </div>
-                                    <div className="imgbox">
-                                        <img src={Image1} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="box">
-                                    <div className="textbox">
-                                        <div className='descriptionTitle bg-white rounded-3'>
-                                            <h4 className='text-black'>ÖLKƏ FUTBOLU</h4>
-                                        </div>
-                                        <p>{("Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz").substring(0, 32)}...</p>
-                                    </div>
-                                    <div className="imgbox">
-                                        <img src={Image1} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="box">
-                                    <div className="textbox">
-                                        <div className='descriptionTitle bg-white rounded-3'>
-                                            <h4 className='text-black'>ÖLKƏ FUTBOLU</h4>
-                                        </div>
-                                        <p>{("Futbol haqqında xəbərlərə burdan rahatlıqla baxa bilərsiniz").substring(0, 32)}...</p>
-                                    </div>
-                                    <div className="imgbox">
-                                        <img src={Image1} alt="" />
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </section>
