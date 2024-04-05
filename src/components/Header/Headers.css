@@ -6,6 +6,12 @@ header {
     transition: top 0.3s ease-in-out;
 }
 
+.profile {
+    background-image: url('../../assets/2Nabi3x4.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .logo {
     cursor: pointer;
 }
@@ -92,6 +98,11 @@ ul .menuText:hover {
         order: -1;
         margin-right: 0;
         margin-bottom: 20px;
+    }
+
+    .profile {
+        width: 30px;
+        height: 30px;
     }
 
     .subInputBox {

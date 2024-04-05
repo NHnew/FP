@@ -38,7 +38,6 @@ const Headers = () => {
     return (
         <header className='w-full bg-black py-2'>
             <div className='container mx-auto'>
-
                 <div className="menu flex items-center justify-between">
                     <div onClick={handleMenuClick} className='hamburgerMenu'>
                         {menuIcon ? <FiMenu className='openHamburgerMenu' /> : <IoMdClose className='closeHamburgerMenu' />}
@@ -71,16 +70,12 @@ const Headers = () => {
                             <GrLanguage />
                         </li>
                     </ul>
-                    <Menu as="div" className="relative ml-3">
+                    <Menu as="div" className="relative">
                         <div>
                             <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm">
                                 <span className="absolute -inset-1.5" />
                                 <span className="sr-only">Open user menu</span>
-                                <img
-                                    className="h-8 w-8 rounded-full"
-                                    src={Profile}
-                                    alt=""
-                                />
+                                <div className="profile h-8 w-8 rounded-full"></div>
                             </Menu.Button>
                         </div>
                         <Transition
