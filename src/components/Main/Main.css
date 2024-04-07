@@ -76,6 +76,16 @@
     height: 350px;
 }
 
+.newsBtn {
+    color: #000;
+    background-color: #fff;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 18px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
 
 @media screen and (min-width: 768px) and (max-width: 1300px) {
     .col-md-3 .imgbox {

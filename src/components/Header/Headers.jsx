@@ -20,6 +20,7 @@ const Headers = () => {
     const [menuIcon, setMenuIcon] = useState(true);
     const [menuVisible, setMenuVisible] = useState(false);
 
+
     useEffect(() => {
         const body = document.body;
         menuVisible ? body.style.overflow = 'hidden' : body.style.overflow = '';
