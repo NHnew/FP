@@ -58,13 +58,6 @@ const Main = () => {
                 "primaryImageUrl": "url2",
                 "imageUrls": ["url2"],
                 "tagIds": ["tag2"]
-            },
-            {
-                "title": "Title 3",
-                "description": "Description 3",
-                "primaryImageUrl": "url3",
-                "imageUrls": ["url3"],
-                "tagIds": ["tag3"]
             }
         ];
 
@@ -143,6 +136,15 @@ const Main = () => {
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <h2 className='text-white text-3xl font-bold py-4'>Transfer</h2>
+                            </div>
                         </div>
                     </div>
                 </section>
