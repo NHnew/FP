@@ -7,6 +7,7 @@ import News from './pages/News/News';
 import Transfer from './pages/Transfer/Transfer';
 import LiveScore from './pages/LiveScore/LiveScore';
 import Other from './pages/Other/Other';
+import Details from './pages/Details/Details';
 
 
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='/transfer' element={<Transfer />} />
           <Route path='/livescore' element={<LiveScore />} />
           <Route path='/other' element={<Other />} />
+          <Route path="/details" element={<Details />} />
         </Routes>
       </Router>
     </>

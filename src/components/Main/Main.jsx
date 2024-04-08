@@ -3,11 +3,13 @@ import Image1 from '../../assets/Image1.jpg';
 import Image3 from '../../assets/Image3.jpg';
 import '../Main/Main.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const Main = () => {
 
     const [news, setNews] = useState([]);
+    const navigate = useNavigate();
 
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibmExM2kiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJuYTEzaUBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk4NDI5Zjc5LTBmZDYtNDg5ZC1hMWEwLWQxMTZlNmI3ODUxZSIsIm5iZiI6MTcxMjQ4NzI1OSwiZXhwIjoxNzQ0MDIzMjU5LCJpc3MiOiJ3d3cubXlhcGkuY29tIiwiYXVkIjoid3d3LmJpbG1lbW5lLmNvbSJ9.1NWvPKu1hBg08kG0MQyqdftH4r-1gGtBpPrgYyaquhI";
 
@@ -60,10 +62,16 @@ const Main = () => {
                 "tagIds": ["tag2"]
             }
         ];
-
         initialNews.forEach(newsItem => postNews(newsItem));
         getNews();
     }, []);
+
+
+    const clickNews = () => {
+        navigate('/details');
+    };
+
+
 
 
     return (
@@ -123,7 +131,7 @@ const Main = () => {
                         <div className="row row-cols-md-4 row-cols-2">
                             {news.map((item, index) => (
                                 <div key={index} className="col-md-3">
-                                    <div className="box">
+                                    <div onClick={clickNews} className="box">
                                         <div className="textbox">
                                             <div className='descriptionTitle bg-white rounded-3'>
                                                 <h4 className='text-black font-bold'>{item.title}</h4>
