@@ -3,3 +3,23 @@
     min-height: 100vh;
     padding: 40px 0;
 }
+.react-datepicker__input-container .react-datepicker__calendar-icon{
+    padding: 4.5px 4px 3px !important;
+}
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+    width: 100%;
+}
+
+.react-datepicker__view-calendar-icon input {
+    padding: 1px 22px !important;
+    width: 100% !important;
+}
+
+.categorySelecet {
+    padding: 0 10px;
+}
+
+.custom-datepicker::placeholder {
+    color: #000;
+}
