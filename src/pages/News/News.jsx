@@ -9,7 +9,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 const News = () => {
 
     const [news, setNews] = useState([]);
-    // const [selectedDate, setSelectedDate] = useState(null);
     const [startDate, setStartDate] = useState(null);
     const navigate = useNavigate();
 
