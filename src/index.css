@@ -16,12 +16,12 @@
     background-color: #000;
 }
 
-section {
-    padding: 40px 0;
+::-webkit-scrollbar {
+    display: none;
 }
 
-::-webkit-scrollbar {
-    width: 12px;
+section {
+    padding: 40px 0;
 }
 
 ::-webkit-scrollbar-thumb {
