@@ -11,23 +11,8 @@ const Main = () => {
     const [news, setNews] = useState([]);
     const navigate = useNavigate();
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibmExM2kiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJuYTEzaUBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk4NDI5Zjc5LTBmZDYtNDg5ZC1hMWEwLWQxMTZlNmI3ODUxZSIsIm5iZiI6MTcxMjQ4NzI1OSwiZXhwIjoxNzQ0MDIzMjU5LCJpc3MiOiJ3d3cubXlhcGkuY29tIiwiYXVkIjoid3d3LmJpbG1lbW5lLmNvbSJ9.1NWvPKu1hBg08kG0MQyqdftH4r-1gGtBpPrgYyaquhI";
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoicmVzYWQiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJyc2RAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJiNWRiMDVlMy03MWY5LTRhNDAtYmM5NS1lNDQ4OTA3ZWNkNDAiLCJuYmYiOjE3MTQ3MzMwMzcsImV4cCI6MTc0NjI2OTAzNywiaXNzIjoid3d3Lm15YXBpLmNvbSIsImF1ZCI6Ind3dy5iaWxtZW1uZS5jb20ifQ.O6AQQHBcdE7rO-jJ9NUhd806w3aXsRR49OirbnLwnbo";
 
-
-    const postNews = async (newsData) => {
-        try {
-            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/News/Create`,
-                newsData,
-                {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-            console.log(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
     const getNews = async () => {
         try {
@@ -45,24 +30,6 @@ const Main = () => {
 
 
     useEffect(() => {
-
-        const initialNews = [
-            {
-                "title": "Title 1",
-                "description": "Description 1",
-                "primaryImageUrl": "url1",
-                "imageUrls": ["url1"],
-                "tagIds": ["tag1"]
-            },
-            {
-                "title": "Title 2",
-                "description": "Description 2",
-                "primaryImageUrl": "url2",
-                "imageUrls": ["url2"],
-                "tagIds": ["tag2"]
-            }
-        ];
-        initialNews.forEach(newsItem => postNews(newsItem));
         getNews();
     }, []);
 
@@ -70,8 +37,6 @@ const Main = () => {
     const clickNews = () => {
         navigate('/details');
     };
-
-
 
 
     return (

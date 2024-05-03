@@ -18,6 +18,9 @@
 .box {
     margin: 0 10px 50px;
     position: relative;
+    border: 2px solid #aa0dda;
+    border-radius: 30px;
+    overflow: hidden;
 }
 
 .box:hover {
@@ -57,12 +60,6 @@
 
 .descriptionTitle h4 {
     font-size: 12px;
-}
-
-.box {
-    border: 2px solid #aa0dda;
-    border-radius: 30px;
-    overflow: hidden;
 }
 
 .imgbox {
