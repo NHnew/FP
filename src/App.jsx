@@ -8,14 +8,21 @@ import Transfer from './pages/Transfer/Transfer';
 import LiveScore from './pages/LiveScore/LiveScore';
 import Other from './pages/Other/Other';
 import Details from './pages/Details/Details';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
 const App = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <>
-      <Router>
+  
         <Routes>
           <Route path='/login' element={<Login />} />
           <Route path='/' element={<Navigate to='/login' />} />
@@ -25,9 +32,10 @@ const App = () => {
           <Route path='/transfer' element={<Transfer />} />
           <Route path='/livescore' element={<LiveScore />} />
           <Route path='/other' element={<Other />} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/details/:newsId" element={<Details />} />
+          <Route path="*" element={<div style ={{color:"#fff"}}>poxu cixdi niko, davay siktir burdan!!!</div>} />
         </Routes>
-      </Router>
+   
     </>
 
   );

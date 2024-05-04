@@ -28,8 +28,8 @@ const News = () => {
         }
     };
 
-    const clickNews = () => {
-        navigate('/details');
+    const clickNews = (id) => {
+        navigate(`/details/${id}`);
     };
 
     useEffect(() => {
@@ -89,7 +89,7 @@ const News = () => {
                     <div className="row row-cols-md-4 row-cols-2">
                         {news.map((item, index) => (
                             <div key={index} className="col-md-3">
-                                <div onClick={clickNews} className="box">
+                                <div onClick={()=>{clickNews(item.id)}} className="box">
                                     <div className="textbox">
                                         <div className='descriptionTitle bg-white rounded-3'>
                                             <h4 className='text-black font-bold'>{item.title}</h4>

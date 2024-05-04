@@ -3,15 +3,18 @@ import Headers from '../../components/Header/Headers';
 import axios from 'axios';
 import '../Details/Details.css';
 import Image1 from '../../assets/Image3.jpg';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Details = () => {
+    const { newsId } = useParams();
+    const [currentNews, setCurrentNews] = useState(null);
+    const [comments, setComments] = useState([]);
     const [news, setNews] = useState([]);
     const [comment, setComment] = useState('');
     const [showButton, setShowButton] = useState(false);
     const navigate = useNavigate();
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibmExM2kiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJuYTEzaUBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk4NDI5Zjc5LTBmZDYtNDg5ZC1hMWEwLWQxMTZlNmI3ODUxZSIsIm5iZiI6MTcxMjQ4NzI1OSwiZXhwIjoxNzQ0MDIzMjU5LCJpc3MiOiJ3d3cubXlhcGkuY29tIiwiYXVkIjoid3d3LmJpbG1lbW5lLmNvbSJ9.1NWvPKu1hBg08kG0MQyqdftH4r-1gGtBpPrgYyaquhI";
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiWXVzaWYiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJ5dXNpZi5oYXNhbm92MTdAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJmYmMzMTQ0ZS05NjQwLTQyYWYtODcyNS0xMWYxNmM1ODY5NWUiLCJuYmYiOjE3MTQ4MTg5NjgsImV4cCI6MTc0NjM1NDk2OCwiaXNzIjoid3d3Lm15YXBpLmNvbSIsImF1ZCI6Ind3dy5iaWxtZW1uZS5jb20ifQ.5noBhvUt75BEBfyLW6YDgKK4eyxPo2evfa0OX2yJFyg";
 
     const getNews = async () => {
         try {
@@ -27,15 +30,51 @@ const Details = () => {
         }
     };
 
+    const postNewsById = async () => {
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/News/ReadById`, { id: newsId }, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            setCurrentNews(response.data.data);
+            console.log(response.data.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    const readComments = async () => {
+        axios.post(`${import.meta.env.VITE_BASE_URL}/Comment/ReadByNews`, { id: newsId }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(r => setComments(r.data.data))
+            .catch(e => console.log(e));
+    };
+    const createCommented = async () => {
+        axios.post(`${import.meta.env.VITE_BASE_URL}/Comment/Create`, { newsId, content: comment, parentId: null, userId: "dasda" }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(async r => {
+            await readComments();
+        }).catch(e => console.log(e));
+    };
+
     const clickNews = () => {
         navigate('/details');
     };
 
     useEffect(() => {
         getNews();
+        readComments();
     }, []);
-
-    const addComment = () => {
+    useEffect(() => {
+        postNewsById();
+    }
+        , [newsId]);
+    const addComment = async () => {
+        await createCommented();
         setComment('');
         setShowButton(false);
     };
@@ -49,12 +88,12 @@ const Details = () => {
                         <div className="col-md-12">
                             <div className='newsDetailsHeader w-full h-[500px] mt-5'>
                                 <div className="imgbox">
-                                    <img src={Image1} alt="" />
+                                    <img src={currentNews?.primaryImage} alt="" />
                                 </div>
                                 <div className='bg-white rounded-3'>
-                                    <h4 className='newsDetailsTitle text-black bg-white rounded-3 font-bold'>ÇEMPİONLAR LİQASI</h4>
+                                    <h4 className='newsDetailsTitle text-black bg-white rounded-3 font-bold'>{currentNews?.title}</h4>
                                 </div>
-                                <h3 className='newsDetailsDesc'>Football.</h3>
+                                <h3 className='newsDetailsDesc'>{currentNews?.description}</h3>
                             </div>
                             <p className='mt-[50px] text-white'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A dicta quibusdam animi fuga itaque consectetur temporibus, consequuntur quas unde tenetur eum placeat? Quasi aliquam cum non laborum ab, nam fugit!
                                 Reiciendis ab vel veniam quam earum expedita error pariatur eligendi voluptatem, doloremque neque. Itaque, modi labore suscipit quos distinctio laudantium aliquid sequi cumque obcaecati, rem sint fugiat a quo molestias.
@@ -80,7 +119,7 @@ const Details = () => {
                                             onBlur={() => setShowButton(false)}
                                             onChange={(e) => setComment(e.target.value)}
                                         />
-                                        {showButton && (
+                                        {
                                             <div className='w-full flex justify-end'>
                                                 <div
                                                     className='flex items-center justify-center font-bold bg-white text-black w-24 cursor-pointer rounded-3 mt-2'
@@ -89,12 +128,25 @@ const Details = () => {
                                                     Əlavə edin
                                                 </div>
                                             </div>
-                                        )}
+                                        }
                                     </div>
                                 </div>
                             </div>
-                            <div className='w-full'>
+                            <div className='w-full max-h-96'>
+                                {
+                                    comments.map((c) => (
+                                        <div key={c.id} className='text-white'>
+                                             <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src={c?.user?.profileImageUrl} alt=""/>
 
+                                            {c.content}
+                                            <div>{c.subComments.map(sb => (
+                                                <div className="pl-5" key={sb.id}>
+                                                     <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src={sb?.user?.profileImageUrl} alt=""/>
+                                                    {sb.content}</div>
+                                            ))}</div>
+                                        </div>
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
