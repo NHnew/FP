@@ -4,6 +4,12 @@ import axios from 'axios';
 import '../Details/Details.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { MdOutlineComment } from "react-icons/md";
+import { FiSend } from "react-icons/fi";
+import { FaRegHeart } from "react-icons/fa";
+import { FaRegComment } from "react-icons/fa6";
+
+
+
 
 const Details = () => {
     const { newsId } = useParams();
@@ -85,6 +91,10 @@ const Details = () => {
         setCommentReply('');
     };
 
+    const openCommentBox = () => {
+
+    };
+
 
     return (
         <>
@@ -112,7 +122,14 @@ const Details = () => {
                                 Ducimus harum architecto atque cumque vitae eum quos excepturi magni maiores quasi, nemo mollitia officia dolores, facere, qui saepe vero ex. Quod, praesentium odio velit totam explicabo illo ea beatae?
                                 Excepturi quaerat porro veritatis. Similique sunt voluptatum omnis, accusantium, voluptates ut totam at quis, aspernatur odit eum sapiente. Dignissimos unde enim debitis aut animi, veniam reprehenderit earum consequatur. Velit, soluta.
                                 Praesentium cumque laborum est. Facere asperiores aliquid alias eligendi corporis voluptatum obcaecati nemo facilis soluta nam ducimus, velit voluptatibus, eveniet cum sint, a nostrum fuga nihil corrupti. Accusantium, voluptatum corrupti!</p>
-                            <div className='mt-3 text-gray-500'>05/04/2024</div>
+                            <div className='w-full flex items-center justify-between'>
+                                <div className='flex items-center text-white'>
+                                    <FaRegHeart className='cursor-pointer' />
+                                    <FaRegComment onClick={openCommentBox} className='cursor-pointer mx-2' />
+                                    <FiSend className='cursor-pointer' />
+                                </div>
+                                <div className='mt-3 text-gray-500 flex w-full justify-end'>05/04/2024</div>
+                            </div>
                             <div className='flex items-center mt-5 mb-[10px] h-[80px]'>
                                 <div className='flex w-full commentBox'>
                                     <div className='commentProfile w-[35px] h-[35px] bg-gray-100 rounded-full'></div>

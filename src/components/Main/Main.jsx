@@ -3,7 +3,7 @@ import Image1 from '../../assets/Image1.jpg';
 import Image3 from '../../assets/Image3.jpg';
 import '../Main/Main.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const Main = () => {
@@ -89,7 +89,9 @@ const Main = () => {
                                     <h2 className='text-white text-3xl font-bold py-4'>Xəbərlər</h2>
                                 </div>
                                 <div>
-                                    <button className='newsBtn'>Daha çox</button>
+                                    <Link to='/news'>
+                                        <button className='newsBtn'>Daha çox</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
