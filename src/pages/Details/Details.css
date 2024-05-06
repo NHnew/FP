@@ -26,9 +26,6 @@
 
 .commentInput {
     color: #fff;
-}
-
-.commentInput:focus {
     border-bottom: 1px solid gray;
 }
 

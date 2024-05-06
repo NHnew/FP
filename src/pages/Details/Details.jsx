@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Headers from '../../components/Header/Headers';
 import axios from 'axios';
 import '../Details/Details.css';
-import Image1 from '../../assets/Image3.jpg';
 import { useNavigate, useParams } from 'react-router-dom';
+import { MdOutlineComment } from "react-icons/md";
 
 const Details = () => {
     const { newsId } = useParams();
@@ -11,7 +11,8 @@ const Details = () => {
     const [comments, setComments] = useState([]);
     const [news, setNews] = useState([]);
     const [comment, setComment] = useState('');
-    const [showButton, setShowButton] = useState(false);
+    const [commentReply, setCommentReply] = useState('');
+    const [showInputReply, setShowInputReply] = useState(false);
     const navigate = useNavigate();
 
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiWXVzaWYiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJ5dXNpZi5oYXNhbm92MTdAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJmYmMzMTQ0ZS05NjQwLTQyYWYtODcyNS0xMWYxNmM1ODY5NWUiLCJuYmYiOjE3MTQ4MTg5NjgsImV4cCI6MTc0NjM1NDk2OCwiaXNzIjoid3d3Lm15YXBpLmNvbSIsImF1ZCI6Ind3dy5iaWxtZW1uZS5jb20ifQ.5noBhvUt75BEBfyLW6YDgKK4eyxPo2evfa0OX2yJFyg";
@@ -61,23 +62,29 @@ const Details = () => {
         }).catch(e => console.log(e));
     };
 
-    const clickNews = () => {
-        navigate('/details');
+    const clickNews = (id) => {
+        navigate(`/details/${id}`);
     };
 
     useEffect(() => {
         getNews();
         readComments();
     }, []);
+
     useEffect(() => {
         postNewsById();
     }
         , [newsId]);
+
     const addComment = async () => {
-        await createCommented();
+        comment === '' ? null : await createCommented();
         setComment('');
-        setShowButton(false);
     };
+
+    const addCommentReply = async () => {
+        setCommentReply('');
+    };
+
 
     return (
         <>
@@ -106,23 +113,21 @@ const Details = () => {
                                 Excepturi quaerat porro veritatis. Similique sunt voluptatum omnis, accusantium, voluptates ut totam at quis, aspernatur odit eum sapiente. Dignissimos unde enim debitis aut animi, veniam reprehenderit earum consequatur. Velit, soluta.
                                 Praesentium cumque laborum est. Facere asperiores aliquid alias eligendi corporis voluptatum obcaecati nemo facilis soluta nam ducimus, velit voluptatibus, eveniet cum sint, a nostrum fuga nihil corrupti. Accusantium, voluptatum corrupti!</p>
                             <div className='mt-3 text-gray-500'>05/04/2024</div>
-                            <div className='flex items-center justify-between mt-5 mb-[50px] h-[80px]'>
-                                <div className='flex commentBox'>
-                                    <div className='commentProfile w-[30px] h-[30px] bg-gray-100 rounded-full'></div>
-                                    <div>
+                            <div className='flex items-center mt-5 mb-[10px] h-[80px]'>
+                                <div className='flex w-full commentBox'>
+                                    <div className='commentProfile w-[35px] h-[35px] bg-gray-100 rounded-full'></div>
+                                    <div className='w-full'>
                                         <input
-                                            className='commentInput px-2 ml-2 w-96 bg-transparent'
+                                            className='commentInput w-full px-2 ml-2 w-96 bg-transparent'
                                             placeholder='şərh əlavə edin...'
                                             type="text"
                                             value={comment}
-                                            onFocus={() => setShowButton(true)}
-                                            onBlur={() => setShowButton(false)}
                                             onChange={(e) => setComment(e.target.value)}
                                         />
                                         {
                                             <div className='w-full flex justify-end'>
                                                 <div
-                                                    className='flex items-center justify-center font-bold bg-white text-black w-24 cursor-pointer rounded-3 mt-2'
+                                                    className='flex items-center justify-center font-bold bg-white text-black w-24 cursor-pointer rounded-3 py-1 mt-2'
                                                     onClick={addComment}
                                                 >
                                                     Əlavə edin
@@ -132,18 +137,46 @@ const Details = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='w-full max-h-96'>
+                            <div className='w-full max-h-96 overflow-y-auto p-2 mt-4'>
                                 {
                                     comments.map((c) => (
-                                        <div key={c.id} className='text-white'>
-                                             <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src={c?.user?.profileImageUrl} alt=""/>
-
-                                            {c.content}
-                                            <div>{c.subComments.map(sb => (
-                                                <div className="pl-5" key={sb.id}>
-                                                     <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src={sb?.user?.profileImageUrl} alt=""/>
-                                                    {sb.content}</div>
-                                            ))}</div>
+                                        <div key={c.id} className='text-white mb-5'>
+                                            <div className='flex items-center'>
+                                                <img class=" mr-2 inline-block h-6 w-6 rounded-full ring-2 ring-white" src={c?.user?.profileImageUrl} alt="" />
+                                                {c.content}
+                                                <MdOutlineComment
+                                                    onClick={() => setShowInputReply(showInputReply === c.id ? null : c.id)}
+                                                    className='ml-3 cursor-pointer'
+                                                    style={{ fontSize: '12px' }}
+                                                />
+                                            </div>
+                                            {showInputReply === c.id && (
+                                                <div>
+                                                    <input
+                                                        className='commentInput w-4/5 mt-3 px-2 ml-2 w-96 bg-transparent'
+                                                        placeholder='şərh əlavə edin...'
+                                                        type="text"
+                                                        value={commentReply}
+                                                        onChange={(e) => setCommentReply(e.target.value)}
+                                                    />
+                                                    <div className='flex w-4/5 justify-end'>
+                                                        <div
+                                                            className='flex items-center justify-center font-bold bg-white text-black w-24 cursor-pointer rounded-3 py-1 mt-2'
+                                                            onClick={addCommentReply}
+                                                        >
+                                                            Əlavə edin
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                            <div>
+                                                {c.subComments.map(sb => (
+                                                    <div className="pl-[40px] my-5" key={sb.id}>
+                                                        <img class=" mr-2 inline-block h-6 w-6 rounded-full ring-2 ring-white" src={sb?.user?.profileImageUrl} alt="" />
+                                                        {sb.content}
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
                                     ))
                                 }
@@ -155,7 +188,7 @@ const Details = () => {
                         <div className="row row-cols-md-4 row-cols-2">
                             {news.map((item, index) => (
                                 <div key={index} className="col-md-3">
-                                    <div onClick={clickNews} className="box">
+                                    <div onClick={() => clickNews(item.id)} className="box">
                                         <div className="textbox">
                                             <div className='descriptionTitle bg-white rounded-3'>
                                                 <h4 className='text-black font-bold'>{item.title}</h4>
